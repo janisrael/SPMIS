@@ -1732,7 +1732,7 @@ input.clearable {
                    <form>
 
                   <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Transfer this Item?</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Transfers this Item?</h5>
          
                   </div>
                   <div class="modal-body">
