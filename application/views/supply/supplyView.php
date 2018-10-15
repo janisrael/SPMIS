@@ -1725,7 +1725,7 @@ input.clearable {
 </div>
 
 <!-- new transfer modal -->
-<div id="transfer_Modal" class="modal fade"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!-- <div id="transfer_Modal" class="modal fade"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
               <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
 
@@ -1787,7 +1787,7 @@ input.clearable {
         <button type="button" class="btn btn-secondary  modal-action modal-close" data-dismiss="modal">Cancel</button>
       </div>
    </div>
-</div>
+</div> -->
 
 <!-- new transfer modal -->
 
@@ -1828,19 +1828,17 @@ input.clearable {
                             </div>
                         </div>
 
-                        <div class="form-group row" style="display:none;">
+                        <!-- <div class="form-group row" style="display:none;">
                             <div class="col s12">
                               <input type="text" name="istransferred_waste" id="istransferred_waste" class="form-control">
                             </div>
-                        </div>  
-
-
+                        </div>   -->
 
                   </div>
      
                 </div>
       <div class="modal-footer">
-        <button type="button" type="submit" id="btnWaste" class="btn btn-primary">OK</button>
+        <button type="button" type="submit" id="btnUpdate" class="btn btn-primary">OK</button>
            </form>
         <button type="button" class="btn btn-secondary  modal-action modal-close" data-dismiss="modal">Cancel</button>
       </div>

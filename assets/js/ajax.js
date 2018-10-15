@@ -705,14 +705,18 @@ $('#btnUpdate').on('click', function(){
     // data['notes']=$('#notes_waste').val();
     // data['waste_number']=$('#waste_number').val();
     // data['date_wasted']=$('#date_wasted').val();
+
+
+    // tblpropertynumber
     var waste_id = $('#id_waste').val();
     var equipment_id = $('#equipmentid_waste').val();
     var property_number = $('#propertynumber_waste').val();
     var is_wasted = 1;
     var is_transferred = $('#istransferred_waste').val();
-    var notes = $('#notes_waste').val();
+    // tblwaste
     var waste_number = $('#waste_number').val();
     var date_wasted = $('#date_wasted').val();
+    var notes = $('#notes_waste').val();
 
     $.ajax({
         type:"POST",
