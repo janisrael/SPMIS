@@ -1828,11 +1828,11 @@ input.clearable {
                             </div>
                         </div>
 
-                        <!-- <div class="form-group row" style="display:none;">
+                        <div class="form-group row" style="display:none;">
                             <div class="col s12">
                               <input type="text" name="istransferred_waste" id="istransferred_waste" class="form-control">
                             </div>
-                        </div>   -->
+                        </div>  
 
                   </div>
      
