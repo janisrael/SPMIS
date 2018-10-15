@@ -105,3 +105,23 @@ INNER JOIN refoffice ON tblpersonnel.officeID=refoffice.officeID)
 INNER JOIN refposition ON tblpersonnel.positionID=refposition.positionID)
 INNER JOIN refshift ON tblpersonnel.shiftID=refshift.shiftID)
 INNER JOIN refappoint ON tblpersonnel.appointID=refappoint.appointID);
+
+
+tables:
+-tblparics
+-tbldocequipment
+-tblequipment
+-tblpersonnel
+-tblpropertynumber
+-tbltransfer
+
+SELECT tblparics.parics, tblparics.paricsID,
+
+
+
+git commands
+
+merge dev to master
+git checkout master
+git merge dev
+git push -u origin master
