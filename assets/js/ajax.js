@@ -149,21 +149,7 @@ function refresh_equipment(){
               $("#seq").val(result.specificEqpt[0].seq);
               $("#unitPrice").val(thousandSeparator(((price*100)/100).toFixed(2)));
               $("#last_seq").val(_seqNumber);
-              //alert(base_url+"assets/images/barcode/1.png")
-              
-              // var pQty = document.getElementById('eqpticsqty').innerHTML;
-              // var i;
-              // var propCode = "";
 
-             // for (i =1; i <=pQty; i++) {  
-
-             // propCode += "<input class='p-number data-pnumber" + i +"' value='" +result.specificEqpt[0].code+sub + "-" + result.specificEqpt[0].fundCode + "-" + year + "-" + result.specificEqpt[0].officeCode + "-" + i + "'/>";
-
-             // }
-
-             // document.getElementById("pCode").innerHTML = propCode;
-
-    
             }
 
         }
