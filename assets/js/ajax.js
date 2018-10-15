@@ -13,7 +13,6 @@ function getLastSeq(){
   var base_url = window.location.origin + "/" + pathName + "/";
   $.ajax({
       type:"POST",
-      // data:{data: data},
       url: base_url + "supply/viewLastSeq",
       dataType: "json",
       success: function(result){
@@ -28,10 +27,10 @@ function getLastSeq(){
 }
 
 
-
 function refresh_equipment(){
     var pathArray = window.location.pathname.split( '/' );
     var pathName;
+
     if(pathArray[1]!="sppmo"){
       pathName=pathArray[1]+"/sppmo";
     }else{
@@ -48,17 +47,11 @@ function refresh_equipment(){
         dataType: "JSON",
 
         success: function(result){
-          // alert (EID);
             var html="";
             var i;
-           
-            // var res = parseFloat(lastSeq.split("-").pop());
-            // var seQ = (res + 1);
-            // $("#lastSeq").val(res + 1);
             var tempPosted = $("#isPosted").val();
 
             for(i=0; i<result.specificProp.length; i++){
-    
               var _propNumber = result.specificProp[i].propertyNumber;
               if(tempPosted==1){
                   if(result.specificProp[i].isWasted==1){
@@ -80,9 +73,6 @@ function refresh_equipment(){
                   action_btn="<a href='#waste_Modal' disabled='disabled' class='item-waste' data-id='"+result.specificProp[i].id+"' data-equipment_id='"+result.specificProp[i].equipmentID+"' data-property_number='"+_propNumber+"' data-is_wasted='"+result.specificProp[i].isWasted+"' data-is_transferred='"+result.specificProp[i].isTransferred+"' data-w_notes='"+result.specificProp[i].notes+"' data-last_seq='"+_seqNumber+"'>Waste</a>";
                   statusT="";
               }
-
-
-
               codeContainer = "<svg class='barcodes' jsbarcode-format='code128' jsbarcode-value='"+result.specificProp[i].propertyNumber+"' jsbarcode-fontoptions='' jsbarcode-textmargin='0' jsbarcode-width='1' jsbarcode-height='30' jsbarcode-fontSize='12' jsbarcode-background='rgba(255, 255, 255, 0);'></svg>";
 
               // not yet set              
@@ -210,12 +200,14 @@ $(document).on('click','.viewData',function (e) {
         url: base_url + "supply/viewSupply",
         dataType: "json",
         success: function(result){
+        
             //console.log(result);
             doc=result.supplyDetails[0].docType;
             lastSeq=result.curSeqs[0].wasteNumber;
             var res = parseFloat(lastSeq.split("-").pop());
             $("#lastSeq").val(res + 1);
             
+       
 
             if(result.supplyDetails.length>0){
               if (doc==2) {
@@ -778,7 +770,7 @@ $('#_wasteBulkItem').on('click', function(){
   // var n = d.getFullYear();
   // var pSeq = parseFloat($('#lastSeq').val());
   // var w_n = n + "-" +pSeq ;
-
+// alert (_seqNumber);
   $('#equip_id_B').val(_equipID);
   $('#waste_number_B').val(_seqNumber);
 
@@ -809,7 +801,10 @@ $('#_wasteBulkItem').on('click', function(){
         dataType: "JSON",
         data: { equipmentID:equipment_id_B, wasteNumber:waste_number_B, isWasted:is_wasted_B, dateWasted: date_wasted_B, isTransferred:is_transferred_B, notes:notes_B },
         success: function(result){
-     
+         $('#waste_Modal_Bulk').modal('close');
+    Materialize.toast('<b><div class="fa fa-plus fa-lg" style="color:blue"></div> Item Wasted!</b>', 2000, 'rounded white black-text flow-text');
+    getLastSeq();
+    refresh_equipment();
         }
 
     });

@@ -1791,6 +1791,61 @@ input.clearable {
 
 <!-- new transfer modal -->
 
+<div id="waste_Modal" class="modal fade"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+
+                   <form>
+
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Waste this Item?</h5>
+         
+                  </div>
+                  <div class="modal-body">
+                        <div class="form-group row" >
+                            <div class="col s12">
+                              <input type="text" name="equip_id" id="equip_id" class="form-control" readonly>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col s6">
+                              <label class="col-md-2 col-form-label">Waste Number</label>
+                              <input name="waste_number" id="waste_number" value="" readonly>
+                              <!-- <input name="waste_number_C" id="waste_number_C" value="" readonly> -->
+                              <input type="text" name="iswasted_waste" id="iswasted_waste" class="form-control" value="1" readonly hidden>
+                            </div>
+                            <div class="col s6">
+                              <label class="col-md-2 col-form-label">Date Wasted</label>
+                              <input type="text" name="date_wasted" id='date_wasted' class="dateWaste form-control datepicker2" required value="<?php echo date('Y/m/d') ?>">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col s12">
+                              <label class="col-md-2 col-form-label">Notes</label>
+                              <textarea name="notes_waste" id="notes_waste" class="form-control" value=""></textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-group row" style="display:none;">
+                            <div class="col s12">
+                              <input type="text" name="istransferred_waste" id="istransferred_waste" class="form-control">
+                            </div>
+                        </div>  
+
+
+
+                  </div>
+     
+                </div>
+      <div class="modal-footer">
+        <button type="button" type="submit" id="btnWaste" class="btn btn-primary">OK</button>
+           </form>
+        <button type="button" class="btn btn-secondary  modal-action modal-close" data-dismiss="modal">Cancel</button>
+      </div>
+   </div>
+</div>
 
 
 
