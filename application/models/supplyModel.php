@@ -359,7 +359,7 @@ class SupplyModel extends CI_Model{
       $this->db->set('isWasted', $isWasted);
       $this->db->set('wasteNumber', $wasteNumber);
       $this->db->set('isTransferred', $isTransferred);
-      $this->db->set('notes',$notes);
+      // $this->db->set('notes',$notes);
 
       $result=$this->db->update('tblpropertynumber');
       return $result;
@@ -379,13 +379,14 @@ class SupplyModel extends CI_Model{
       $wasteNumber=$this->input->post('waste_number');
       $propertyNumber=$this->input->post('property_number');
       $dateWasted=$this->input->post('date_wasted');
-
+      $notes=$this->input->post('notes');
       $data=array(
         'wasteNumber'=>$wasteNumber,
         'user'=>$this->session->userdata('sppmo')['username'],
         // 'propertyNumber'=>$propertyNumber,
         'dateWasted'=>$dateWasted,
         'action'=>'wasted',
+        'notes'=>$notes,
       );
       $this->db->insert('tblwaste',$data);
 
