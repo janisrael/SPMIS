@@ -1804,16 +1804,19 @@ input.clearable {
                   <div class="modal-body">
                         <div class="form-group row" >
                             <div class="col s12">
-                              <input type="text" name="equip_id" id="equip_id" class="form-control" readonly>
+                           <!--    <input type="text" name="equip_id" id="equip_id" class="form-control" readonly> -->
                             </div>
                         </div>
 
                         <div class="form-group row">
                             <div class="col s6">
                               <label class="col-md-2 col-form-label">Waste Number</label>
-                              <input name="waste_number" id="waste_number" value="" readonly>
+                              <input type="text" name="waste_number" id="waste_number" value="" readonly>
                               <!-- <input name="waste_number_C" id="waste_number_C" value="" readonly> -->
-                              <input type="text" name="iswasted_waste" id="iswasted_waste" class="form-control" value="1" readonly hidden>
+                              <input type="text" name="iswasted_waste" id="iswasted_waste" class="form-control" value="1" placeholder="is wasted">
+                              <input type="text" name ="id_waste" id="id_waste" value=""  placeholder="id waste">
+                              <input type="text" name ="equipmentid_waste" id="equipmentid_waste" value=""  placeholder="equipmentid">
+                              <input type="text" name ="propertynumber_waste" id="propertynumber_waste" value=""  placeholder="property number">
                             </div>
                             <div class="col s6">
                               <label class="col-md-2 col-form-label">Date Wasted</label>
