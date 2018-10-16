@@ -2,6 +2,9 @@
 
 <style>
 
+.hidden {
+  display: none !important;
+}
 i.fa.fa-caret-down {
     margin-left: 10px !important;
 }
@@ -1049,11 +1052,14 @@ input.clearable {
       </div> <!-- section end div -->
     </div> <!-- content end div -->
   </div> <!-- modal-content end -->
+
   <div class="modal-footer">
-    <button class="modal-action waves-effect waves-green">Print All Barcodes</button>
-    <!-- <button class="modal-action waves-effect waves-green" onclick="refresh_equipment();">refresh</button> -->
+    <button class="modal-action waves-effect waves-green" id="_printAllBarcode">Print All Barcodes</button>
+ 
     <a href="#waste_Modal_Bulk" class="btn" id="_wasteBulkItem" type="button" class="modal-action waves-effect waves-green btn-flat item_waste">Waste All</a>
+
     <button id="_transBulkItem" type="button" class="modal-action waves-effect waves-green btn-flat item_transfer">Transfer All</button>
+    
     <button type="button" class="modal-action modal-close waves-effect btn btn-raised btn-danger">Close</button>
   </div>
 </div>

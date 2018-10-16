@@ -52,10 +52,11 @@ function refresh_equipment(){
             var tempPosted = $("#isPosted").val();
 
             for(i=0; i<result.specificProp.length; i++){
-              var _propNumber = result.specificProp[i].propertyNumber;
-              if(tempPosted==1){
-                  if(result.specificProp[i].isWasted==1){
+            var _propNumber = result.specificProp[i].propertyNumber;
 
+              if(tempPosted==1){
+
+                  if(result.specificProp[i].isWasted==1){
                     status="<div class='wasted_wrapper'>wasted</div>";
                     action_btn="<div class=''>Restore</div>";
                   }else{
@@ -104,9 +105,19 @@ function refresh_equipment(){
                         // '</td>'+
                         '</tr>';
             }
-                   $('#show_data').html(html);
+            $('#show_data').html(html);
 
-              JsBarcode(".barcodes").init();
+            JsBarcode(".barcodes").init();
+
+            if(tempPosted==0){
+                  document.getElementById('_printAllBarcode').className += " hidden";
+                  document.getElementById('_wasteBulkItem').className += " hidden";
+                  document.getElementById('_transBulkItem').className += " hidden";                
+            }else{
+                  document.getElementById('_printAllBarcode').className -= " hidden";
+                  document.getElementById('_wasteBulkItem').className -= " hidden";
+                  document.getElementById('_transBulkItem').className -= " hidden";                
+            }
 
               d = new Date();
               $(".barcode").attr("src",base_url+"assets/images/bc.png?"+d.getTime());
@@ -440,7 +451,7 @@ $(document).on('click','.viewEqpt',function(e) {
             // var seQ = (res + 1);
             // $("#lastSeq").val(res + 1);
             var tempPosted = $("#isPosted").val();
-
+            // alert (result.specificEqpt[i].isPosted);
 
 
             for(i=0; i<result.specificProp.length; i++){
@@ -462,20 +473,32 @@ $(document).on('click','.viewEqpt',function(e) {
                     statusT="";
                   }
 
+                  transfer_btn = "<a href='#transfer_Modal' class='item_transfer' data-id='"+result.specificProp[i].id+"'>Transfer</a>";
+                  view_btn = "<a href='' class='' data-id='"+result.specificProp[i].id+"'>View</a>";
+
+                  var opt_btn_wrapper="<label class='dropdown' id='opt_btn'><div class='dd-button'>Action</div><input type='checkbox' class='dd-input' id='chk_btn'>" +
+                  "<ul class='dd-menu'>" +
+                  "<li>'"+action_btn+"'</li>" +
+                  "<li>'"+transfer_btn+"'</li>" +
+                  "<li>'"+view_btn+"'</li>" +
+                  "</ul>" +
+                  "</label>";
+
               }else{
                   // action_btn="<a href='#waste_Modal' disabled='disabled' class='item-waste' data-id='"+result.specificProp[i].id+"' data-equipment_id='"+result.specificProp[i].equipmentID+"' data-property_number='"+_propNumber+"' data-is_wasted='"+result.specificProp[i].isWasted+"' data-is_transferred='"+result.specificProp[i].isTransferred+"' data-w_notes='"+result.specificProp[i].notes+"' data-last_seq='"+seQ+"'>Waste</a>";
-                  action_btn="<a href='#waste_Modal' disabled='disabled' class='item-waste' data-id='"+result.specificProp[i].id+"' data-equipment_id='"+result.specificProp[i].equipmentID+"' data-property_number='"+_propNumber+"' data-is_wasted='"+result.specificProp[i].isWasted+"' data-is_transferred='"+result.specificProp[i].isTransferred+"' data-w_notes='"+result.specificProp[i].notes+"' data-last_seq='"+_seqNumber+"'>Waste</a>";
+              
+                  // action_btn="<a disabled='disabled' class='item-waste' data-id='"+result.specificProp[i].id+"' data-equipment_id='"+result.specificProp[i].equipmentID+"' data-property_number='"+_propNumber+"' data-is_wasted='"+result.specificProp[i].isWasted+"' data-is_transferred='"+result.specificProp[i].isTransferred+"' data-w_notes='"+result.specificProp[i].notes+"' data-last_seq='"+_seqNumber+"' onclick='return false;'>Waste</a>";
                   statusT="";
+
+                  var opt_btn_wrapper="<label class='dropdown' id='opt_btn'><div class='dd-button'>Action</div>"+
+                  "<input type='checkbox' disabled='disabled' class='dd-input' id='chk_btn'>" +
+                  "</label>";
+
               }
 
-
-
-              codeContainer = "<svg class='barcodes' jsbarcode-format='code128' jsbarcode-value='"+result.specificProp[i].propertyNumber+"' jsbarcode-fontoptions='' jsbarcode-textmargin='0' jsbarcode-width='1' jsbarcode-height='30' jsbarcode-fontSize='12' jsbarcode-background='rgba(255, 255, 255, 0);'></svg>";
-
-              // not yet set              
-              transfer_btn = "<a href='#transfer_Modal' class='item_transfer' data-id='"+result.specificProp[i].id+"'>Transfer</a>";
-              view_btn = "<a href='' class='' data-id='"+result.specificProp[i].id+"'>View</a>";
-              // not yet set
+                // new barcode
+                codeContainer = "<svg class='barcodes' jsbarcode-format='code128' jsbarcode-value='"+result.specificProp[i].propertyNumber+"' jsbarcode-fontoptions='' jsbarcode-textmargin='0' jsbarcode-width='1' jsbarcode-height='30' jsbarcode-fontSize='12' jsbarcode-background='rgba(255, 255, 255, 0);'></svg>";
+                // new barcode
 
                 html += '<tr>' +
                         '<td hidden>'+result.specificProp[i].id+'</td>'+
@@ -484,21 +507,24 @@ $(document).on('click','.viewEqpt',function(e) {
                         '<td>'+codeContainer+'</td>'+
                         '<td>'+status+'</td>'+
                         '<td>'+statusT+'</td>'+
-                        '<td><label class="dropdown">'+
-                             '<div class="dd-button">Action</div>'+
-                             '<input type="checkbox" class="dd-input" id="test">' +
-                                '<ul class="dd-menu">'+
-                                  '<li>'+action_btn+'</li>'+
-                                  '<li>'+transfer_btn+'</li>' +
-                                  '<li>'+view_btn+'</li>'+
-                                '</ul>'+
-                              '</label>' +
-                        '</td>' +
-
+                        '<td>'+opt_btn_wrapper+'</td>' +
                         '</tr>';
              }
             // } end for
               $('#show_data').html(html);
+
+              // hide footer buttons when equipment is not posted
+              if(tempPosted==0){
+                  document.getElementById('_printAllBarcode').className += " hidden";
+                  document.getElementById('_wasteBulkItem').className += " hidden";
+                  document.getElementById('_transBulkItem').className += " hidden";                
+              }else{
+                  document.getElementById('_printAllBarcode').className -= " hidden";
+                  document.getElementById('_wasteBulkItem').className -= " hidden";
+                  document.getElementById('_transBulkItem').className -= " hidden";                
+
+              }
+              //
 
 
               JsBarcode(".barcodes").init();
@@ -1362,6 +1388,7 @@ $(document).on('submit','.postData',function (e) {
           $('#modal1').modal('close');
           Materialize.toast('<b><div class="fa fa-folder-open fa-lg" style="color:green"></div> Document Posted!</b>', 2000, 'rounded white black-text flow-text');
           // dataTable.ajax.reload();
+          refresh_equipment();
         }
       });
     }
