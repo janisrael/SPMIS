@@ -476,13 +476,13 @@ $(document).on('click','.viewEqpt',function(e) {
                   transfer_btn = "<a href='#transfer_Modal' class='item_transfer' data-id='"+result.specificProp[i].id+"'>Transfer</a>";
                   view_btn = "<a href='' class='' data-id='"+result.specificProp[i].id+"'>View</a>";
 
-                  var opt_btn_wrapper="<label class='dropdown' id='opt_btn'><div class='dd-button'>Action</div><input type='checkbox' class='dd-input' id='chk_btn'>" +
-                  "<ul class='dd-menu'>" +
-                  "<li>'"+action_btn+"'</li>" +
-                  "<li>'"+transfer_btn+"'</li>" +
-                  "<li>'"+view_btn+"'</li>" +
-                  "</ul>" +
-                  "</label>";
+                  var opt_btn_wrapper='<label class="dropdown" id="opt_btn"><div class="dd-button">Action</div><input type="checkbox" class="dd-input" id="chk_btn">' +
+                  '<ul class="dd-menu">' +
+                  '<li>'+action_btn+'</li>' +
+                  '<li>'+transfer_btn+'</li>' +
+                  '<li>'+view_btn+'</li>' +
+                  '</ul>' +
+                  '</label>';
 
               }else{
                   // action_btn="<a href='#waste_Modal' disabled='disabled' class='item-waste' data-id='"+result.specificProp[i].id+"' data-equipment_id='"+result.specificProp[i].equipmentID+"' data-property_number='"+_propNumber+"' data-is_wasted='"+result.specificProp[i].isWasted+"' data-is_transferred='"+result.specificProp[i].isTransferred+"' data-w_notes='"+result.specificProp[i].notes+"' data-last_seq='"+seQ+"'>Waste</a>";
