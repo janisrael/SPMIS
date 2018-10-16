@@ -1819,15 +1819,20 @@ input.clearable {
                               <label class="col-md-2 col-form-label">Waste Number</label>
                               <input type="text" name="waste_number" id="waste_number" value="" readonly>
                               <!-- <input name="waste_number_C" id="waste_number_C" value="" readonly> -->
-                              <input type="text" name="iswasted_waste" id="iswasted_waste" class="form-control" value="1" placeholder="is wasted">
-                              <input type="text" name ="id_waste" id="id_waste" value=""  placeholder="id waste">
-                              <input type="text" name ="equipmentid_waste" id="equipmentid_waste" value=""  placeholder="equipmentid">
-                              <input type="text" name ="propertynumber_waste" id="propertynumber_waste" value=""  placeholder="property number">
+                              <input type="text" name="iswasted_waste" id="iswasted_waste" class="form-control" value="1" hidden>
+                              <input type="text" name ="id_waste" id="id_waste" value=""  hidden>
+                              <input type="text" name ="equipmentid_waste" id="equipmentid_waste" value=""  hidden>
+                              
+                            </div>
+                            <div class="col s6">
+                              <label class="col-md-2 col-form-label">Property Number</label>
+                              <input type="text" name ="propertynumber_waste" id="propertynumber_waste" value="" readonly>
                             </div>
                             <div class="col s6">
                               <label class="col-md-2 col-form-label">Date Wasted</label>
                               <input type="text" name="date_wasted" id='date_wasted' class="dateWaste form-control datepicker2" required value="<?php echo date('Y/m/d') ?>">
                             </div>
+
                         </div>
 
                         <div class="form-group row">
