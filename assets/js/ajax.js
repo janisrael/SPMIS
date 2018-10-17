@@ -204,8 +204,6 @@ $(document).on('click','.viewData',function (e) {
             var res = parseFloat(lastSeq.split("-").pop());
             $("#lastSeq").val(res + 1);
             
-       
-
             if(result.supplyDetails.length>0){
               if (doc==2) {
                 // $('#whenIcs').addClass('showBtn');
@@ -1092,8 +1090,6 @@ $(document).on('submit','.equipList',function (e) {
 
 
 // }));
-
-
 // add property numbers
 
 $(document).on('submit','.neweqpt',function (e) {
@@ -1116,7 +1112,6 @@ $(document).on('submit','.neweqpt',function (e) {
     data["Office"]=$(".offCode").val();
     data["Seq"]=$("#seq2").val();
     data["Qty"]=$("#qty2").val();
-
     data["Unit"]=$("#unit2").val();
     data["UnitPrice"]=$("#price2").val();
     data["Life"]=$("#lifespan2").val();
@@ -1127,10 +1122,6 @@ $(document).on('submit','.neweqpt',function (e) {
  doc=$("#docType").val();
 
 // res = parseFloat(lastSeq.split("-").pop());
-
-
-
-
 
 // if(str.includes("")
 // var str_code = "Hello world, (welcome to the universe.";
@@ -1253,10 +1244,10 @@ $(document).on('click','.waste',function (e) {
   var tempSumQty;
   var compQty;
   $('.delPar').text($("#paricsnumber").text());
-    $('.ID').val(row.find('td:first').text());
+  $('.ID').val(row.find('td:first').text());
   $('.desc').text(row.find('td:nth-child(5)').text());
 
-    // allQty=$('.totalQty')-;
+  // allQty=$('.totalQty')-;
   tempTotalQty=row.find('td:nth-child(3)').text();
   tempWasteQty=parseInt(row.find('td:nth-child(10)').text());
   tempSumQty=tempTotalQty - tempWasteQty;
@@ -1266,17 +1257,15 @@ $(document).on('click','.waste',function (e) {
   
 
 
-    // var property_id = $(this).data('id');
-    // var equipment_id = $(this).data('equipment_id');
-    var d = new Date();
-    var n = d.getFullYear();
+  // var property_id = $(this).data('id');
+  // var equipment_id = $(this).data('equipment_id');
+  var d = new Date();
+  var n = d.getFullYear();
 
-    var w_n = n + "-" + pSeq ;
+  var w_n = n + "-" + pSeq ;
 
     
-    $('[name="wasteNum"]').val(w_n);
-
-
+  $('[name="wasteNum"]').val(w_n);
 
 
   $(document).on('submit','.wasteEquip',function (e) {
@@ -1609,5 +1598,3 @@ function checker(data){
 function thousandSeparator(x){
   return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
-
-
