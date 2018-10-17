@@ -510,7 +510,7 @@ $(document).on('click','.viewEqpt',function(e) {
                         '<td>'+opt_btn_wrapper+'</td>' +
                         '</tr>';
              }
-            // } end for
+              // } end for
               $('#show_data').html(html);
 
               // hide footer buttons when equipment is not posted
@@ -528,8 +528,6 @@ $(document).on('click','.viewEqpt',function(e) {
 
 
               JsBarcode(".barcodes").init();
-
-            
 
             var amt,qty,price,str,year;
             if(result.specificEqpt.length>0){
@@ -590,12 +588,7 @@ $(document).on('click','.viewEqpt',function(e) {
         }
     });
 
-// ************************************** if old data ******************************* //
-
-// ************************************** end of old data *************************** //
 });
-
-
 
 
 //get data for waste record

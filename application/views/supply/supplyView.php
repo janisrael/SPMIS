@@ -1065,7 +1065,7 @@ input.clearable {
 </div>
 <!-- viewEqpt -->
 
-
+<!--************************************ new document (PAR) modal **************************************** -->
 <div id="modal3" class="modal modal-fixed-footer">
   <div class="modal-content">
     <h4 class="">New Acquisition (Property Acknowledgement Receipt)</h4>
@@ -1200,7 +1200,8 @@ input.clearable {
     <button class="modal-action modal-close waves-effect waves-green btn-flat">Close</button>
   </div>
 </div>
-
+<!--************************************ end new document (PAR) modal **************************************** -->
+<!--************************************ new document (ICS) modal **************************************** -->
 <div id="modal4" class="modal modal-fixed-footer">
   <div class="modal-content">
     <h4 class="">New Acquisition (Inventory Custodian Slip)</h4>
@@ -1328,6 +1329,7 @@ input.clearable {
     <button class="modal-action modal-close waves-effect waves-green btn-flat">Close</button>
   </div>
 </div>
+<!--************************************ end new document (ICS) modal **************************************** -->
 
 <div id="modal5" class="modal modal-fixed-footer">
   <div class="modal-content">
@@ -1573,6 +1575,7 @@ input.clearable {
   </div>
 </div>
 
+<!--******************************** delete document modal ***********************************-->
 <div id="delDoc" class="modal modal-fixed-footer" style="height:350px !important;width:800px !important">
   <div class="modal-content">
     <div class="content">
@@ -1591,7 +1594,9 @@ input.clearable {
     <button class="modal-action modal-close waves-effect waves-green btn-flat">Cancel</button>
   </div>
 </div>
+<!--******************************** end delete document modal ***********************************-->
 
+<!--******************************** delete equipment modal ***********************************-->
 <div id="delEqpt" class="modal modal-fixed-footer" style="height:350px !important;width:800px !important">
   <div class="modal-content">
     <div class="content">
@@ -1609,7 +1614,9 @@ input.clearable {
     <button class="modal-action modal-close waves-effect waves-green btn-flat">Cancel</button>
   </div>
 </div>
+<!--******************************** end delete equipment modal ***********************************-->
 
+<!--******************************** Post modal ***********************************-->
 <div id="postModal" class="modal modal-fixed-footer" style="height:500px !important;width:800px !important">
   <div class="modal-content">
     <div class="content">
@@ -1629,7 +1636,9 @@ input.clearable {
     <button class="modal-action modal-close waves-effect waves-green btn-flat">Cancel</button>
   </div>
 </div>
+<!--******************************** end Post modal ***********************************-->
 
+<!--******************************** forward modal ***********************************-->
 <div id="forward" class="modal modal-fixed-footer" style="height:500px !important;width:800px !important">
   <div class="modal-content">
     <div class="content">
@@ -1638,7 +1647,7 @@ input.clearable {
         <p class="flow-text" style="margin-top:0">Forward this document: <b class="paricsForward"></b>
           <br><br> - Date Issued: <b class="dateIssuedForward"></b>
           <br> - End User: <b class="userForward"></b>
-          <br> - Date Forwarded: <input type="text" name="dateForward" id='dateForward' style="width:100px" class="datePosted form-control datepicker2" required="required">
+          <br> - Date Forwarded: <input type="text" name="dateForward" id="dateForward" value="<?php echo date('Y/m/d') ?>" style="width:100px" class="datePosted form-control datepicker2" required="required">
         </p>
     </div> <!-- content end div -->
   </div> <!-- modal-content end div -->
@@ -1648,7 +1657,9 @@ input.clearable {
     <button class="modal-action modal-close waves-effect waves-green btn-flat">Cancel</button>
   </div>
 </div>
+<!--******************************** end forward modal ***********************************-->
 
+<!--******************************** cancel modal ***********************************-->
 <div id="cancel" class="modal modal-fixed-footer" style="height:500px !important;width:800px !important">
   <div class="modal-content">
     <div class="content">
@@ -1667,23 +1678,19 @@ input.clearable {
     <button class="modal-action modal-close waves-effect waves-green btn-flat">Cancel</button>
   </div>
 </div>
-
-<!-- waste modal -->
+<!--******************************** end cancel modal ***********************************-->
+<!--******************************** waste modal ***********************************-->
 <div id="wasteEquipment" class="modal modal-fixed-footer" style="height:550px !important;width:800px !important">
-  
 
-  <div class="modal-content">
-    <div class="content">
-        <form action="" method="POST" class="wasteEquip">
+    <div class="modal-content">
+      <div class="content">
+          <form action="" method="POST" class="wasteEquip">
 
-            <div class="modal-header">
-    <div class="row">
-       <p class="flow-text" id="wasteParics">Parics Number:  <b class="delPar"></b></p>
+              <div class="modal-header">
+      <div class="row">
+         <p class="flow-text" id="wasteParics">Parics Number:  <b class="delPar"></b></p>
+      </div>
     </div>
-  </div>
-
-     
- 
           <div class="row" >
             <div class="col s2 l2 m2">
               <p class="right">Description:</p>
@@ -1730,13 +1737,15 @@ input.clearable {
 
 </div>
 
-<!-- new transfer modal -->
-<!-- <div id="transfer_Modal" class="modal fade"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!--******************************** end waste modal ***********************************-->
+
+<!--******************************** transfer modal ***********************************-->
+
+<div id="transfer_Modal" class="modal fade"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
               <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
 
-                   <form>
-
+                  <form>
                   <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Transfers this Item?</h5>
          
@@ -1753,39 +1762,42 @@ input.clearable {
                               <input type="text" name="equipmentID_tr" id="equipmentID_tr" class="form-control" placeholder="equipmentID">
                             </div>
                         </div>
-
-
                         <div class="form-group row">
-                            <div 
-
-                            class="col s6">
+                            <div class="col s6">
                               <input type="text" name="personID_tr" id="personID_tr" value="" placeholder="personID">
                               <input type="text" name="propertyNumber_tr" id="propertyNumber_tr" class="form-control" value="" placeholder="property Number">
 
                             </div>
+
+                            <div class="col s3">
+                              <select name="user" class="select2 user" required autocomplete="off">
+                                <?php if($users): ?>
+                                  <option disabled selected value="0">Choose End User</option>
+                                  <?php foreach($users as $user): ?>
+                                    <option value="<?php echo $user['personID']; ?>"><?php echo $user['surName'].', '.$user['firstName'].' '.$user['middleName'].' '.$user['suffixName']; ?></option>
+                                  <?php endforeach; ?>
+                                <?php else: ?>
+                                  <option value="">No Data</option>
+                                <?php endif; ?>
+                            </select>
+                            </div>
                             <div class="col s6">
                               <input type="text" name="amount_tr" id="amount_tr" class="form-control" value="" placeholder="amount">
-
                               <input type="text" name="trDate_tr" id='trDate_tr' class="dateWaste form-control datepicker2" required value="<?php echo date('Y/m/d') ?>">
-
                             </div>
                         </div>
-
                         <div class="form-group row">
                             <div class="col s12">
                               <label class="col-md-2 col-form-label">Notes</label>
                               <textarea name="notes_waste" id="notes_waste" class="form-control" value=""></textarea>
                             </div>
                         </div>
-
                         <div class="form-group row" style="display:none;">
                             <div class="col s12">
                               <input type="text" name="istransferred_waste" id="istransferred_waste" class="form-control">
                             </div>
                         </div>  
-
                   </div>
-     
                 </div>
       <div class="modal-footer">
         <button type="button" type="submit" id="btnUpdate" class="btn btn-primary">OK</button>
@@ -1793,9 +1805,8 @@ input.clearable {
         <button type="button" class="btn btn-secondary  modal-action modal-close" data-dismiss="modal">Cancel</button>
       </div>
    </div>
-</div> -->
-
-<!-- new transfer modal -->
+</div>
+<!--******************************** end transfer modal ***********************************-->
 
 <div id="waste_Modal" class="modal fade"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
               <div class="modal-dialog modal-lg" role="document">
