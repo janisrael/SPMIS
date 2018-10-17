@@ -859,6 +859,7 @@ input.clearable {
     <h4 class="center green darken-4 white-text padTitle"><div id="eqpticsdetails"></div></h4>
     <div class="divider"></div>
     <input type="text" class="eq tbleqid">
+    <input type="text" id="curEndUser">
 
     <input type="text" hidden class="or tblorid">
     <div class="content">
@@ -1789,7 +1790,7 @@ input.clearable {
                         <div class="form-group row">
                             <div class="col s12">
                               <label class="col-md-2 col-form-label">Notes</label>
-                              <textarea name="notes_waste" id="notes_waste" class="form-control" value=""></textarea>
+                              <textarea name="notes_tr" id="notes_tr" class="form-control" value=""></textarea>
                             </div>
                         </div>
                         <div class="form-group row" style="display:none;">

@@ -408,11 +408,6 @@ $(document).on('click','.viewData',function (e) {
 });
 
 
-$(document).on('click','.item_transfer', function(e){
-
-  
-
-});
 
 
 $(document).on('click','.viewEqpt',function(e) {
@@ -451,6 +446,9 @@ $(document).on('click','.viewEqpt',function(e) {
             var tempPosted = $("#isPosted").val();
             // alert (result.specificEqpt[i].isPosted);
 
+            var _enduser = $("#name").text();
+            // store current enduser to a inputbox
+            $("#curEndUser").val(_enduser);
 
             for(i=0; i<result.specificProp.length; i++){
     
@@ -462,7 +460,12 @@ $(document).on('click','.viewEqpt',function(e) {
                     action_btn="<div class=''>Restore</div>";
                   }else{
                     status="";
-                    action_btn="<a href='#waste_Modal' class='item-waste' data-id='"+result.specificProp[i].id+"' data-equipment_id='"+result.specificProp[i].equipmentID+"' data-property_number='"+_propNumber+"' data-is_wasted='"+result.specificProp[i].isWasted+"' data-is_transferred='"+result.specificProp[i].isTransferred+"' data-w_notes='"+result.specificProp[i].notes+"' data-last_seq='"+_seqNumber+"'>Waste</a>";
+                    action_btn="<a href='#waste_Modal' class='item-waste' data-id='"+result.specificProp[i].id+
+                    "' data-equipment_id='"+result.specificProp[i].equipmentID+
+                    "' data-property_number='"+_propNumber+"' data-is_wasted='"+result.specificProp[i].isWasted+
+                    "' data-is_transferred='"+result.specificProp[i].isTransferred+
+                    "' data-w_notes='"+result.specificProp[i].notes+
+                    "' data-last_seq='"+_seqNumber+"'>Waste</a>";
                   }
 
                   if(result.specificProp[i].isTransferred!=0){
@@ -471,7 +474,14 @@ $(document).on('click','.viewEqpt',function(e) {
                     statusT="";
                   }
 
-                  transfer_btn = "<a href='#transfer_Modal' class='item_transfer' data-id='"+result.specificProp[i].id+"'>Transfer</a>";
+                  transfer_btn = "<a href='#transfer_Modal' class='item-transfer' data-id='"+result.specificProp[i].id+
+                    "' data-equipment_id='"+result.specificProp[i].equipmentID+
+                    "' data-property_number='"+_propNumber+"' data-is_wasted='"+result.specificProp[i].isWasted+
+                    "' data-is_transferred='"+result.specificProp[i].isTransferred+
+                    "' data-w_notes='"+result.specificProp[i].notes+
+                    "' data-last_seq='"+_seqNumber+
+                    "' data-enduser='"+_enduser+ "'>Transfer</a>";
+
                   view_btn = "<a href='' class='' data-id='"+result.specificProp[i].id+"'>View</a>";
 
                   var opt_btn_wrapper='<label class="dropdown" id="opt_btn"><div class="dd-button">Action</div><input type="checkbox" class="dd-input" id="chk_btn">' +
@@ -526,6 +536,8 @@ $(document).on('click','.viewEqpt',function(e) {
 
 
               JsBarcode(".barcodes").init();
+
+      
 
             var amt,qty,price,str,year;
             if(result.specificEqpt.length>0){
@@ -588,8 +600,35 @@ $(document).on('click','.viewEqpt',function(e) {
 
 });
 
+//******************* get data for transfer equipment **************************//
+$('#show_data').on('click','.item-transfer', function (e){
 
-//get data for waste record
+    var property_id_tr = $(this).data('id');
+    var equipment_id = $(this).data('equipent_id');
+    var d = new Date();
+    var n = d.getFullYear();
+    var seq = $(this).data('last_seq');
+    //** transfer number format: yy-mm-seq **//
+    var w_n = seq;
+
+    var property_number = $(this).data('property_number');
+    var is_transferred = $(this).data('is_transferred');
+    var w_notes = $(this).data('w_notes');
+    var end_user = $(this).data('enduser');
+
+    $('[name="id_tr"]').val(property_id_tr);
+    $('[name="equipmentID_tr"]').val(equipmentID_tr);
+    $('[name="transferNumber_tr"]').val(w_n);
+    $('[name="personID_tr"]').val(end_user);
+    $('[name="propertyNumber_tr"]').val(property_number);
+    $('[name="notes_tr"]').val(w_notes);
+
+});
+
+//**************************** end ***************************************//
+
+//******************* get data for waste record **************************//
+
 $('#show_data').on('click','.item-waste',function (e) {
 
     var property_id = $(this).data('id');
@@ -597,7 +636,7 @@ $('#show_data').on('click','.item-waste',function (e) {
     var d = new Date();
     var n = d.getFullYear(); 
     var seq = $(this).data('last_seq');
-    var w_n = seq ;
+    var w_n = seq;
 
     var property_number = $(this).data('property_number');
     var is_wasted = $(this).data('is_wasted');
@@ -612,7 +651,7 @@ $('#show_data').on('click','.item-waste',function (e) {
     $('[name="istransferred_waste"]').val(is_transferred);
     $('[name="notes_waste"]').val(w_notes);
 });
-
+//***************************** end **************************************//
 
 $('#searchBtn').on('click',function(){
     var pathArray = window.location.pathname.split( '/' );
