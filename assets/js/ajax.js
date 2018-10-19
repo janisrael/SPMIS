@@ -604,7 +604,7 @@ $(document).on('click','.viewEqpt',function(e) {
 $('#show_data').on('click','.item-transfer', function (e){
 
     var property_id_tr = $(this).data('id');
-    var equipment_id = $(this).data('equipent_id');
+    var equipment_id_tr = $(this).data('equipment_id');
     var d = new Date();
     var n = d.getFullYear();
     var seq = $(this).data('last_seq');
@@ -617,14 +617,12 @@ $('#show_data').on('click','.item-transfer', function (e){
     var end_user = $(this).data('enduser');
 
     $('[name="id_tr"]').val(property_id_tr);
-    $('[name="equipmentID_tr"]').val(equipmentID_tr);
+    $('[name="equipmentID_tr"]').val(equipment_id_tr);
     $('[name="transferNumber_tr"]').val(w_n);
     $('[name="personID_tr"]').val(end_user);
     $('[name="propertyNumber_tr"]').val(property_number);
     $('[name="notes_tr"]').val(w_notes);
-
 });
-
 //**************************** end ***************************************//
 
 //******************* get data for waste record **************************//

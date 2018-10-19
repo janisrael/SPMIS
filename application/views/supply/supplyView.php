@@ -2,6 +2,14 @@
 
 <style>
 
+.select2 {
+    font-weight: 900 !important;
+    border: 1px solid #26a69a !important;
+    padding: 0 0 0 10px !important;
+}
+.inactive {
+  border-bottom: none !important;
+}
 .hidden {
   display: none !important;
 }
@@ -1753,24 +1761,19 @@ input.clearable {
                   </div>
                   <div class="modal-body">
                         <div class="form-group row">
-                            <div class="col s3">
-                              <input type="text" name="id_tr" id="id_tr" class="form-control" placeholder="id">
-                            </div>
-                            <div class="col S3">
-                              <input type="text" name="transferNumber_tr" id="transferNumber_tr" class="form-control" placeholder="transfer number">
-                            </div>
-                            <div class="col s3">
-                              <input type="text" name="equipmentID_tr" id="equipmentID_tr" class="form-control" placeholder="equipmentID">
-                            </div>
-                        </div>
-                        <div class="form-group row">
                             <div class="col s6">
-                              <input type="text" name="personID_tr" id="personID_tr" value="" placeholder="personID">
-                              <input type="text" name="propertyNumber_tr" id="propertyNumber_tr" class="form-control" value="" placeholder="property Number">
-
+                              <input type="text" name="id_tr" id="id_tr" class="form-control" placeholder="id" hidden>
+                           
+                           
+                              <label>Transfer Number</label>
+                              <input type="text" name="transferNumber_tr" id="transferNumber_tr" class="inactive form-control" placeholder="transfer number" readonly>
+                           
+                            
+                              <input type="text" name="equipmentID_tr" id="equipmentID_tr" class="form-control" placeholder="equipmentID" hidden>
                             </div>
 
-                            <div class="col s3">
+                            <div class="col s6">
+                              <label>Transfer to?
                               <select name="user" class="select2 user" required autocomplete="off">
                                 <?php if($users): ?>
                                   <option disabled selected value="0">Choose End User</option>
@@ -1782,9 +1785,24 @@ input.clearable {
                                 <?php endif; ?>
                             </select>
                             </div>
+
+                        </div>
+                        <div class="form-group row">
                             <div class="col s6">
-                              <input type="text" name="amount_tr" id="amount_tr" class="form-control" value="" placeholder="amount">
-                              <input type="text" name="trDate_tr" id='trDate_tr' class="dateWaste form-control datepicker2" required value="<?php echo date('Y/m/d') ?>">
+                              <label>Current End User</label>
+                              <input type="text" name="personID_tr" id="personID_tr" class="inactive" value="" placeholder="personID" readonly>
+                              <label>Property Number</label>
+                              <input type="text" name="propertyNumber_tr" id="propertyNumber_tr" class="form-control inactive" value="" placeholder="property Number" readonly>
+                            </div>
+
+
+                            <div class="col s6">
+                              <label>Amount</label>
+                              <input type="text" name="amount_tr" id="amount_tr" class="form-control inactive" value="" placeholder="amount" readonly>
+                            </div>
+                            <div class="col s6">
+                              <label>Transfer Date</label>
+                              <input type="text" name="trDate_tr" id='trDate_tr' class="inactive form-control " required value="<?php echo date('Y/m/d') ?>" readonly>
                             </div>
                         </div>
                         <div class="form-group row">
